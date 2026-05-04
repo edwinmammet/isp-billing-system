@@ -1,3 +1,5 @@
+# payments/admin.py
 from django.contrib import admin
+from .models import HotspotUser
 
-# Register your models here.
+admin.site.register(HotspotUser)

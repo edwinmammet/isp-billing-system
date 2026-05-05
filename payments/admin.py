@@ -1,5 +1,5 @@
 # payments/admin.py
 from django.contrib import admin
-from .models import HotspotUser
+from .models import Payment
 
-admin.site.register(HotspotUser)
+admin.site.register(Payment)

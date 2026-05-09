@@ -39,6 +39,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'django_celery_beat',
     # Third-party apps
      'rest_framework',
      # Local apps
@@ -136,3 +137,16 @@ STATIC_URL = 'static/'
 # https://docs.djangoproject.com/en/4.2/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+# Celery
+CELERY_BROKER_URL = 'redis://localhost:6379/0'
+CELERY_RESULT_BACKEND = 'redis://localhost:6379/0'
+CELERY_BEAT_SCHEDULER = 'django_celery_beat.schedulers:DatabaseScheduler'
+
+from celery.schedules import crontab
+
+CELERY_BEAT_SCHEDULE = {
+    'disable-expired-users-every-minute': {
+        'task': 'hotspot.tasks.disable_expired_users',
+        'schedule': 60.0,  # runs every 60 seconds
+    },
+}

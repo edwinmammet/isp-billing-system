@@ -27,7 +27,7 @@ SECRET_KEY = 'django-insecure-cw#jb8@#0r6v*x-2@9c)&u_lz7c8esa#(2)&8*ji5u)c-&$#i&
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ["*"]
+ALLOWED_HOSTS = ['localhost', '127.0.0.1', 'scone-handbrake-sweat.ngrok-free.dev']
 
 
 # Application definition
@@ -150,3 +150,7 @@ CELERY_BEAT_SCHEDULE = {
         'schedule': 60.0,  # runs every 60 seconds
     },
 }
+
+# M-Pesa
+MPESA_CALLBACK_URL = config('MPESA_CALLBACK_URL', default='https://yourdomain.com/api/payments/callback/')
+CSRF_TRUSTED_ORIGINS = ['https://scone-handbrake-sweat.ngrok-free.dev']

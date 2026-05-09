@@ -12,6 +12,5 @@ class Package(models.Model):
   created_at = models.DateTimeField(auto_now_add=True)  
 
   def __str__(self):
-    return f"{self.name} - {self.duration_hours} hours - ${self.price}"
-  
+    return f"{self.name} - {self.duration_hours} hours - KES {self.price}"
   
